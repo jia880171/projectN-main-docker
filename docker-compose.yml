@@ -1,0 +1,32 @@
+version: '3' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  angular:
+    container_name: angular
+    build: angular # specify the directory of the Dockerfile
+    ports:
+      - "4200:4200" # specify port forewarding
+    volumes:
+      - ./angular:/app # this will enable changes made to the angular app reflect in the container
+    tty: true
+
+  nest:
+    container_name: nestjs_api_dev
+    build: nestjs-docker
+    # command: npm run start:debug
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./nestjs-docker:/app
+
+  # database:
+  #   image: mariadb # specify image to build container from
+  #   restart: 'always'
+  #   # volumes:
+  #   #   - ./mariadb/db.cnf:/etc/mysql/db.cnf
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "Unick"
+  #   ports:
+  #     - "3306:3306"
