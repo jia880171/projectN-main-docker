@@ -1,3 +1,6 @@
 [submodule "projectN-nest-docker"]
 	path = projectN-nest-docker
 	url = git@github.com:jia880171/projectN-nest-docker.git
+[submodule "projectN-angular-docker"]
+	path = projectN-angular-docker
+	url = git@github.com:jia880171/projectN-angular-docker.git

@@ -4,22 +4,28 @@ version: '3' # specify docker-compose version
 services:
   angular:
     container_name: angular
-    build: angular # specify the directory of the Dockerfile
+    build: projectN-angular-docker # specify the directory of the Dockerfile
     ports:
       - "4200:4200" # specify port forewarding
     volumes:
-      - ./angular:/app # this will enable changes made to the angular app reflect in the container
+      - ./projectN-angular-docker/src:/app/src # this will enable changes made to the angular app reflect in the container
     tty: true
 
   nest:
     container_name: nestjs_api_dev
-    build: nestjs-docker
-    # command: npm run start:debug
+    build: projectN-nest-docker
+    command: npm run start:dev
     tty: true
     ports:
       - 3000:3000
     volumes:
-      - ./nestjs-docker:/app
+      - ./projectN-nest-docker/src:/app/src
+      - ./projectN-nest-docker/migration:/app/migartion
+      - ./projectN-nest-docker/package.json:/app/package.json
+      #dist??
+
+
+
 
   # database:
   #   image: mariadb # specify image to build container from
