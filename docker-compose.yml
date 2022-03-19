@@ -23,6 +23,8 @@ services:
       - ./projectN-nest-docker/migration:/app/migartion
       - ./projectN-nest-docker/package.json:/app/package.json
       #dist??
+      vbb
+      
 
 
 
